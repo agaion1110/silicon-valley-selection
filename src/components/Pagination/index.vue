@@ -1,8 +1,6 @@
 <template>
     <div>
-        <svg >
-            <use></use>
-        </svg>
+        <h1>Pagination666</h1>
     </div>
 </template>
 
