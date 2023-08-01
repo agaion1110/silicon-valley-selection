@@ -7,12 +7,16 @@ import 'element-plus/dist/index.css'
 import 'virtual:svg-icons-register'
 //引入自定义插件对象:注册整个项目全局组件
 import gloalComponent from '@/components'
+//引入路由
+import router from './router'
 // 获取应用的实例对象
 const app = createApp(App)
 //安装自定义插件
 app.use(gloalComponent)
 // 安装element-plus插件
 app.use(ElementPlus);
+//注册模板路由
+app.use(router)
 // 将应用挂载到挂载点上
 app.mount('#app')
 
