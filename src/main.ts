@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import '@/styles/index.scss'
 // 引入element-plus插件与样式
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
@@ -9,8 +10,12 @@ import 'virtual:svg-icons-register'
 import gloalComponent from '@/components'
 //引入路由
 import router from './router'
+// 引入仓库
+import pinia from './store'
 // 获取应用的实例对象
 const app = createApp(App)
+// 安装pinia
+app.use(pinia)
 //安装自定义插件
 app.use(gloalComponent)
 // 安装element-plus插件
