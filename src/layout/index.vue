@@ -1,26 +1,26 @@
 <template>
     <div class="layout_container">
         <!-- 左侧菜单 -->
-        <div class="layout_slider">
+        <div class="layout_slider" :class="{ fold: LayOutSettingStore.fold ? true : false }">
             <Logo></Logo>
             <!-- 展示菜单 -->
             <!-- 滚动组件 -->
             <el-scrollbar class="scrollbar">
-                <!-- 菜单组件:collapse="LayOutSettingStore.fold?true:false" :default-active="$route.path"-->
+                <!-- 菜单组件 -->
                 <el-menu  background-color="#001529" text-color="white"
-                    active-text-color="yellowgreen">
+                    active-text-color="yellowgreen" :default-active="$route.path" :collapse="LayOutSettingStore.fold?true:false">
                     <!--根据路由动态生成菜单-->
-                    <Menu :menuList="userStore.menuRoutes">1321313</Menu> 
+                    <Menu :menuList="userStore.menuRoutes"></Menu> 
                 </el-menu>
             </el-scrollbar>
         </div>
-        <!-- 顶部导航 :class="{ fold: LayOutSettingStore.fold ? true : false }"-->
-        <div class="layout_tabbar" >
+        <!-- 顶部导航 -->
+        <div class="layout_tabbar" :class="{ fold: LayOutSettingStore.fold ? true : false }">
             <!-- layout组件的顶部导航tabbar -->
             <Tabbar></Tabbar>
         </div>
-        <!-- 内容展示区域 :class="{ fold: LayOutSettingStore.fold ? true : false }"-->
-        <div class="layout_main" >
+        <!-- 内容展示区域 -->
+        <div class="layout_main" :class="{ fold: LayOutSettingStore.fold ? true : false }">
             <Main></Main>
         </div>
     </div>
@@ -30,14 +30,24 @@
 import Logo from "./logo/index.vue";
 import Menu from "./menu/index.vue";
 import useUserStore from '@/store/modules/user';
+import Main from './main/index.vue'
+import Tabbar from './tabbar/index.vue';
+import { useRoute } from 'vue-router'
+import useLayOutSettingStore from "@/store/modules/setting";
 let userStore = useUserStore();
-console.log(userStore.menuRoutes)
+let $route = useRoute();
+let LayOutSettingStore = useLayOutSettingStore();
 </script>
-
+<script lang="ts">
+export default {
+    name: 'Layout'
+}
+</script>
 <style scoped lang="scss">
 .layout_container {
     width: 100%;
     height: 100vh;
+    white-space: nowrap;
 
     .layout_slider {
         color: white;
@@ -54,10 +64,12 @@ console.log(userStore.menuRoutes)
                 border-right: none;
             }
         }
+        &.fold{
+            width: $base-menu-min-width;
+        }
     }
 
     .layout_tabbar {
-        background-color: #57e13c;
         position: fixed;
         width: calc(100% - $base-menu-width);
         height: $base-tabbar-height;
@@ -71,7 +83,6 @@ console.log(userStore.menuRoutes)
     }
 
     .layout_main {
-        background-color: #952d2d;
         position: absolute;
         width: calc(100% - $base-menu-width);
         height: calc(100vh - $base-tabbar-height);
