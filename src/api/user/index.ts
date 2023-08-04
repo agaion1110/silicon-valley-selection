@@ -5,7 +5,7 @@ import type { loginForm,loginResponseData,userResponseData } from './type';
 enum API{
     LOGIN_URL = '/user/login',
     USERINFO_URL = '/user/info',
-    LOGOUT_URL = '/admin/acl/index/logout',
+    LOGOUT_URL = '/user/logout',
 }
 // 对外暴露请求函数
 // 登录接口

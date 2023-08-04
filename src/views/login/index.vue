@@ -24,7 +24,7 @@
 <script setup lang="ts">
 import { User, Lock } from '@element-plus/icons-vue';
 import { reactive,ref } from 'vue';
-import { useRouter} from 'vue-router';
+import { useRouter,useRoute} from 'vue-router';
 import { ElNotification } from 'element-plus';
 //引入获取当前时间的函数
 import { getTime } from '@/utils/time';
@@ -33,6 +33,8 @@ import useStore from "../../store/modules/user";
 let useUser = useStore();
 // 获取路由器
 let $router = useRouter();
+// 获取路由对象
+let $route = useRoute();
 // 收集表单账号与密码的数据
 let loginForm = reactive({
   username: '',
@@ -56,7 +58,9 @@ const login = async () => {
     //保证登录成功
     await useUser.login(loginForm);
     //编程式导航跳转到展示数据首页
-    $router.push('/');
+    //判断登录路由是否有query参数
+    let redirect:any = $route.query.redirect;
+    $router.push({path: redirect||'/'});
     ElNotification({
       type: 'success',
       message: '欢迎回来',

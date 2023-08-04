@@ -39,30 +39,34 @@ let userStore = defineStore('User', {
         // 获取用户信息方法
         async userInfo() {
             //获取用户信息进行存储仓库当中[用户头像、名字]
-            const result = await reqUserInfo()
+            const result: any = await reqUserInfo()
             console.log(result)
             //如果获取用户信息成功，存储一下用户信息
             if (result.code == 200) {
                 this.username = result.data.checkUser.username
                 this.avatar = result.data.checkUser.avatar
             } else {
-                
+                return Promise.reject(new Error(result.message))
             }
         },
         //退出登录
         async userLogout() {
             //退出登录请求
-            const result: any = await reqLogout()
-            if (result.code == 200) {
-                //目前没有mock接口:退出登录接口(通知服务器本地用户唯一标识失效)
-                this.token = ''
-                this.username = ''
-                this.avatar = ''
-                localStorage.removeItem('token')
-                return 'ok'
-            } else {
-                return Promise.reject(new Error(result.message))
-            }
+            this.token = ''
+            this.username = ''
+            this.avatar = ''
+            localStorage.removeItem('token')
+            // const result: any = await reqLogout()
+            // if (result.code == 200) {
+            //     //目前没有mock接口:退出登录接口(通知服务器本地用户唯一标识失效)
+            //     this.token = ''
+            //     this.username = ''
+            //     this.avatar = ''
+            //     localStorage.removeItem('token')
+            //     return 'ok'
+            // } else {
+            //     return Promise.reject(new Error(result))
+            // }
         },
     },
     getters: {
