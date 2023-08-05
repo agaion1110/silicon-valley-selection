@@ -38,11 +38,11 @@ router.beforeEach(async (to: any, from: any, next: any) => {
         try {
           //获取用户信息
           let res = await user.userInfo()
-          console.log(res,666)
           //放行
           //万一:刷新的时候是异步路由,有可能获取到用户信息、异步路由还没有加载完毕,出现空白的效果
           next({ ...to })
         } catch (error) {
+          console.log(error)
           //token过期:获取不到用户信息了
           //用户手动修改本地存储token
           //退出登录->用户相关的数据清空

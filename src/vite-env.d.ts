@@ -4,3 +4,4 @@
 declare module '*.vue' {
     import { Component } from 'vue'; const component: Component; export default component;
 }
+declare module "element-plus/dist/locale/zh-cn.mjs";

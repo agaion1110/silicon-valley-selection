@@ -37,8 +37,8 @@ let $router = useRouter();
 let $route = useRoute();
 // 收集表单账号与密码的数据
 let loginForm = reactive({
-  username: '',
-  password: '',
+  username: 'admin',
+  password: 'atguigu123',
 })
 //获取el-form组件
 let loginForms = ref();
