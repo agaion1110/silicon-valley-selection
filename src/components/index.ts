@@ -1,8 +1,9 @@
 import SvgIcon from './SvgIcon/index.vue'
 import Pagination from './Pagination/index.vue'
+import Category from './Category/index.vue'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 // 全局对象
-const allgloablComponent: any = { SvgIcon, Pagination };
+const allgloablComponent: any = { SvgIcon, Pagination, Category };
 
 // 对外暴露插件对象
 export default {
