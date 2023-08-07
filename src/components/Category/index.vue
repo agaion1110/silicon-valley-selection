@@ -30,6 +30,9 @@
 import { onMounted } from 'vue';
 //引入分类相关的仓库
 import useCategoryStore from '@/store/modules/category';
+//接受父组件传递过来scene
+defineProps(['scene']);
+
 let categoryStore = useCategoryStore();
 //分类全局组件挂载完毕,通知仓库发请求获取一级分类的数据
 onMounted(() => {
@@ -57,8 +60,6 @@ const handler1 = () => {
     categoryStore.getC3();
 }
 
-//接受父组件传递过来scene
-defineProps(['scene']);
 
 </script>
 <script lang="ts">
