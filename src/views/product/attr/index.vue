@@ -187,7 +187,6 @@ const toLook = (row: AttrValue, $index: number) => {
             return item.valueName === row.valueName;
         }
     });
-
     if (repeat) {
         //将重复的属性值从数组当中干掉
         attrParams.attrValueList.splice($index, 1);
@@ -210,12 +209,10 @@ const toEdit = (row: AttrValue, $index: number) => {
     nextTick(() => {
         inputArr.value[$index].focus();
     })
-
 }
 
 //删除某一个已有的属性方法回调
 const deleteAttr = async (attrId: number) => {
-
     //发相应的删除已有的属性的请求
     let result: any = await reqRemoveAttr(attrId);
     //删除成功
