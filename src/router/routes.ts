@@ -41,17 +41,7 @@ export const constantRoute = [
             icon: 'DocumentDelete',
         },
     },
-    {
-        //任意路由
-        path: '/:pathMatch(.*)*',
-        redirect: '/404',
-        name: 'Any',
-        meta: {
-            hidden: true,
-            title: '任意路由',
-            icon: 'Platform',
-        },
-    },
+    
     {
         path: '/screen',
         component: () => import('@/views/screen/index.vue'),
@@ -62,6 +52,11 @@ export const constantRoute = [
             icon: "Platform"
         }
     },
+    
+]
+
+// 异步路由
+export const asyncRoutes = [
     {
         path: '/acl',
         component: () => import('@/layout/index.vue'),
@@ -150,4 +145,17 @@ export const constantRoute = [
         ],
     },
 ]
-
+// 任意路由
+export const anyRoutes = [
+    {
+        //任意路由
+        path: '/:pathMatch(.*)*',
+        redirect: '/404',
+        name: 'Any',
+        meta: {
+            hidden: true,
+            title: '任意路由',
+            icon: 'Platform',
+        },
+    },
+]

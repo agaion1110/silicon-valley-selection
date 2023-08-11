@@ -85,7 +85,7 @@
                     <el-checkbox-group v-model="userRole" @change="handleCheckedCitiesChange" style="display: flex;flex-wrap: wrap;">
                         <el-checkbox v-for="(role, index) in allRole" :key="index" :label="role">{{ role.roleName
                         }}</el-checkbox>
-                    </el-checkbox-group>
+                    </el-checkbox-group>s
                 </el-form-item>
             </el-form>
         </template>

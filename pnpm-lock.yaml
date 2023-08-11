@@ -11,9 +11,21 @@ dependencies:
   axios:
     specifier: ^1.4.0
     version: registry.npmmirror.com/axios@1.4.0
+  echarts:
+    specifier: ^5.4.3
+    version: registry.npmmirror.com/echarts@5.4.3
+  echarts-liquidfill:
+    specifier: ^3.1.0
+    version: registry.npmmirror.com/echarts-liquidfill@3.1.0(echarts@5.4.3)
   element-plus:
     specifier: ^2.3.8
     version: registry.npmmirror.com/element-plus@2.3.8(vue@3.3.4)
+  lodash:
+    specifier: ^4.17.21
+    version: registry.npmmirror.com/lodash@4.17.21
+  moment:
+    specifier: ^2.29.4
+    version: registry.npmmirror.com/moment@2.29.4
   nprogress:
     specifier: ^0.2.0
     version: registry.npmmirror.com/nprogress@0.2.0
@@ -1903,6 +1915,26 @@ packages:
       domhandler: registry.npmmirror.com/domhandler@4.3.1
     dev: true
 
+  registry.npmmirror.com/echarts-liquidfill@3.1.0(echarts@5.4.3):
+    resolution: {integrity: sha512-5Dlqs/jTsdTUAsd+K5LPLLTgrbbNORUSBQyk8PSy1Mg2zgHDWm83FmvA4s0ooNepCJojFYRITTQ4GU1UUSKYLw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/echarts-liquidfill/-/echarts-liquidfill-3.1.0.tgz}
+    id: registry.npmmirror.com/echarts-liquidfill/3.1.0
+    name: echarts-liquidfill
+    version: 3.1.0
+    peerDependencies:
+      echarts: ^5.0.1
+    dependencies:
+      echarts: registry.npmmirror.com/echarts@5.4.3
+    dev: false
+
+  registry.npmmirror.com/echarts@5.4.3:
+    resolution: {integrity: sha512-mYKxLxhzy6zyTi/FaEbJMOZU1ULGEQHaeIeuMR5L+JnJTpz+YR03mnnpBhbR4+UYJAgiXgpyTVLffPAjOTLkZA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/echarts/-/echarts-5.4.3.tgz}
+    name: echarts
+    version: 5.4.3
+    dependencies:
+      tslib: registry.npmmirror.com/tslib@2.3.0
+      zrender: registry.npmmirror.com/zrender@5.4.4
+    dev: false
+
   registry.npmmirror.com/ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ee-first/-/ee-first-1.1.1.tgz}
     name: ee-first
@@ -3205,6 +3237,12 @@ packages:
       commander: registry.npmmirror.com/commander@7.2.0
     dev: true
 
+  registry.npmmirror.com/moment@2.29.4:
+    resolution: {integrity: sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/moment/-/moment-2.29.4.tgz}
+    name: moment
+    version: 2.29.4
+    dev: false
+
   registry.npmmirror.com/ms@2.0.0:
     resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ms/-/ms-2.0.0.tgz}
     name: ms
@@ -4228,6 +4266,12 @@ packages:
       typescript: registry.npmmirror.com/typescript@5.0.2
     dev: true
 
+  registry.npmmirror.com/tslib@2.3.0:
+    resolution: {integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tslib/-/tslib-2.3.0.tgz}
+    name: tslib
+    version: 2.3.0
+    dev: false
+
   registry.npmmirror.com/type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/type-check/-/type-check-0.4.0.tgz}
     name: type-check
@@ -4609,3 +4653,11 @@ packages:
     version: 0.1.0
     engines: {node: '>=10'}
     dev: true
+
+  registry.npmmirror.com/zrender@5.4.4:
+    resolution: {integrity: sha512-0VxCNJ7AGOMCWeHVyTrGzUgrK4asT4ml9PEkeGirAkKNYXYzoPJCLvmyfdoOXcjTHPs10OZVMfD1Rwg16AZyYw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/zrender/-/zrender-5.4.4.tgz}
+    name: zrender
+    version: 5.4.4
+    dependencies:
+      tslib: registry.npmmirror.com/tslib@2.3.0
+    dev: false

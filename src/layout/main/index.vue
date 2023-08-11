@@ -15,10 +15,11 @@ let flag = ref(true)
 watch(() => LayOutSettingStore.refsh, async () => {
     console.log('我得刷新一下');
     // await nextTick()
+    flag.value = false
     nextTick(() => {
         flag.value = true
     })
-    flag.value = true
+    
 })
 </script>
 

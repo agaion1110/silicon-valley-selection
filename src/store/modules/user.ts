@@ -6,7 +6,23 @@ import type { loginFormData,loginResponseData,userInfoReponseData } from '@/api/
 // 引入数据类型
 import type { UserState } from './types/type'
 //引入路由(常量路由)
-import { constantRoute } from '@/router/routes'
+import { constantRoute, anyRoutes, asyncRoutes } from '@/router/routes'
+import router from "@/router";
+// @ts-ignore
+import cloneDeep from 'lodash/cloneDeep'
+// 用于过滤当前用户需要展示的异步路由
+function filterAsyncRoute(asnycRoute: any, routes: any) {
+    return asnycRoute.filter((item: any) => {
+      if (routes.includes(item.name)) {
+        if (item.children && item.children.length > 0) {
+          //硅谷333账号:product\trademark\attr\sku
+          item.children = filterAsyncRoute(item.children, routes)
+        }
+        return true
+      }
+    })
+  }
+
 // 创建用户小仓库
 let userStore = defineStore('User', {
     // 小仓库的数据存储
@@ -25,7 +41,6 @@ let userStore = defineStore('User', {
         // 用户登录的方法
         async login(data: loginFormData): Promise<any> {
             let result: loginResponseData = await reqLogin(data);
-            // console.log(result)
             //登录请求:成功200->token
             //登录请求:失败201->登录失败错误的信息
             if (result.code === 200) {
@@ -41,10 +56,18 @@ let userStore = defineStore('User', {
         async userInfo() {
             //获取用户信息进行存储仓库当中[用户头像、名字]
             const result: userInfoReponseData = await reqUserInfo()
+            
             //如果获取用户信息成功，存储一下用户信息
             if (result.code == 200) {
                 this.username = result.data.name
                 this.avatar = result.data.avatar
+                this.buttons = result.data.buttons
+                let userAsnycRoute = filterAsyncRoute(cloneDeep(asyncRoutes),result.data.routes)//用户需要展示的异步路由
+                this.menuRoutes = [...constantRoute, ...userAsnycRoute,...anyRoutes];
+                // 对异步路由和任意路由进行注册
+                [...userAsnycRoute,...anyRoutes].forEach((route: any) => {
+                    router.addRoute(route)
+                  })
             } else {
                 return Promise.reject(new Error(result.message))
             }

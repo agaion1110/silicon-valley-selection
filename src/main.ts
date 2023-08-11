@@ -10,11 +10,13 @@ import 'virtual:svg-icons-register'
 //引入自定义插件对象:注册整个项目全局组件
 import gloalComponent from '@/components'
 //引入路由
-import router from './router'
+import router from './router/index'
 // 引入仓库
 import pinia from './store'
 // 引入路由鉴权文件
 import './permisstion'
+// 暗黑模式需要的样式
+import 'element-plus/theme-chalk/dark/css-vars.css'
 // 获取应用的实例对象
 const app = createApp(App)
 // 安装pinia
@@ -30,15 +32,4 @@ app.use(router)
 // 将应用挂载到挂载点上
 app.mount('#app')
 
-// 测试代码：测试假的接口是否能用
-// import axios from 'axios'
-// // 登录接口
-// axios({
-//     url: '/api/user/login',
-//     method: 'post',
-//     data: {
-//         username: 'admin',
-//         passwprd: '111111'
-//     }
-// })
 
